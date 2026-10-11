@@ -1,0 +1,179 @@
+.booking {
+  padding: 80px 0 120px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.booking h2 {
+  font-size: 36px;
+  margin-bottom: 60px;
+  color: #e7f7ff;
+}
+
+.bookingContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 120px;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+.bookingFormBlock,
+.socialBlock {
+  background-color: #0d2b3e;
+  border: 1px solid #4783a7;
+  border-radius: 40px;
+  padding: 50px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.bookingFormBlock h3,
+.socialBlock h3 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.bookingFormBlock {
+  flex: 2;
+}
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.bookingForm input {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #4783a7;
+  border-radius: 30px;
+  padding: 20px 30px;
+  font-size: 18px;
+  color: #fff;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.bookingForm input::placeholder {
+  color: #4783a7;
+}
+
+.bookingSubmitBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 20px;
+  align-self: center;
+  transition: transform 0.2s ease;
+}
+
+.bookingSubmitBtn:hover {
+  transform: scale(1.1);
+}
+
+.bookingSubmitBtn img {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+.socialBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 350px;
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: #e7f7ff;
+  font-size: 20px;
+  font-weight: 400;
+  transition: opacity 0.2s ease;
+}
+
+.socialLink:hover {
+  opacity: 0.8;
+}
+
+.socialLink img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* АДАПТИВ ДЛЯ МОБІЛКИ */
+
+@media (max-width: 768px) {
+  .booking {
+    padding: 0;
+    margin-bottom: 80px;
+  }
+  .booking h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .bookingContainer {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 30px;
+  }
+  .bookingFormBlock,
+  .socialBlock {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+    padding: 40px 25px;
+    border-radius: 40px;
+  }
+  .bookingFormBlock h3,
+  .socialBlock h3 {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  .bookingForm input {
+    padding: 15px 25px;
+    font-size: 16px;
+  }
+  .bookingSubmitBtn img {
+    width: 140px;
+  }
+  .socialBlock {
+    align-items: center;
+  }
+  .socialLinks {
+    align-items: center;
+  }
+  .socialLink {
+    font-size: 18px;
+  }
+}
