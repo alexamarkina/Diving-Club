@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Profile.module.css';
+import { useAuth } from '../hooks/useAuth';
 
 export default function Profile() {
+  const { logout } = useAuth();
   return (
     <div className={styles.container}>
       <div className={styles.dashboard}>
@@ -16,21 +18,23 @@ export default function Profile() {
               borderRadius: '20px',
               cursor: 'pointer',
             }}
+            onClick={logout}
+            className={styles.назваТвогоКласу}
           >
             Вийти
           </button>
         </div>
 
         <div className={styles.infoBlock}>
-          <h3>Олександра</h3>
-          <p>alexa@example.com</p>
+          <h3>Test</h3>
+          <p>test@gmail.com</p>
 
           <h4
             style={{ marginTop: '30px', borderBottom: '1px solid #4783a7', paddingBottom: '10px' }}
           >
-            Мої бронювання
+            My Bookings
           </h4>
-          <p>У вас поки немає активних занурень.</p>
+          <p>You do not have any active dives yet.</p>
         </div>
       </div>
     </div>

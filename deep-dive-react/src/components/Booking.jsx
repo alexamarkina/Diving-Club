@@ -12,7 +12,6 @@ export default function Booking() {
           {/* onSubmit запобігає перезавантаженню сторінки при кліку на кнопку */}
           <form className={styles.bookingForm} onSubmit={(e) => e.preventDefault()}>
             <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
             <input type="tel" placeholder="Phone" />
 
             <button type="submit" className={styles.bookingSubmitBtn}>
