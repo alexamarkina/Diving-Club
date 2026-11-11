@@ -8,6 +8,11 @@ import Profile from './pages/Profile';
 import './index.css';
 import NotFound from './pages/NotFound';
 
+const ProtectedRoute = ({ children }) => {
+  const isAuth = !!localStorage.getItem('token');
+  return isAuth ? children : <Navigate to="/login" replace />;
+};
+
 function App() {
   return (
     <Router>
@@ -18,7 +23,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/cabinet" element={false ? <Profile /> : <Navigate to="/login" replace />} />
+
+          <Route
+            path="/cabinet"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
