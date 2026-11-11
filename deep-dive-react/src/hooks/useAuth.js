@@ -16,9 +16,16 @@ export const useAuth = () => {
 
             if (email && password) {
                 localStorage.setItem('token', 'fake-jwt-token-12345');
+                localStorage.setItem('userEmail', email);
+
+                if (!localStorage.getItem('userName')) {
+                    const defaultName = email.split('@')[0];
+                    localStorage.setItem('userName', defaultName);
+                }
+
                 navigate('/cabinet');
             } else {
-                throw new Error('Please, enter your email and password');
+                throw new Error('Please, enter email and password');
             }
         } catch (err) {
             setError(err.message);
@@ -29,6 +36,7 @@ export const useAuth = () => {
 
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('userEmail');
         navigate('/login');
     };
 
