@@ -6,7 +6,7 @@ export default function Hero() {
     <section className={styles.hero} id="hero">
       <h1>DEEP DIVE</h1>
 
-      <p className={styles.subtitle}>Відкрий для себе красу підводного світу разом з нами</p>
+      <p className={styles.subtitle}>Discover the beauty of the underwater world with us</p>
 
       <div className={styles.buttonsWrapper}>
         {}

@@ -6,13 +6,11 @@ export default function Profile() {
   const { logout } = useAuth();
   const fileInputRef = useRef(null);
 
-  // Стани для імені та аватара
   const [name, setName] = useState(localStorage.getItem('userName') || 'Sashka');
   const [avatar, setAvatar] = useState(localStorage.getItem('userAvatar') || null);
   const [isEditingName, setIsEditingName] = useState(false);
   const [tempName, setTempName] = useState(name);
 
-  // Стани для контактів
   const [email, setEmail] = useState(
     localStorage.getItem('userEmail') || 'markinaoleksandra0@gmail.com'
   );

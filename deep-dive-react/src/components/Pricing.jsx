@@ -4,15 +4,9 @@ import { usePost } from '../hooks/usePost';
 import styles from './Pricing.module.css';
 
 export default function Pricing() {
-  const {
-    data: tickets,
-    loading,
-    error,
-  } = useFetch('https://6ae64b83877d34ccafc2c349.mockapi.io/tickets');
-  const { postData, loading: isBooking } = usePost(
-    'https://6ae64b83877d34ccafc2c349.mockapi.io/bookings'
-  );
-
+  const { data: tickets, loading, error } = useFetch('http://localhost:5001/api/tickets');
+  const { postData, loading: isBooking } = usePost('http://localhost:5001/api/bookings');
+  
   const [selectedTour, setSelectedTour] = useState(null);
   const [bookingSuccess, setBookingSuccess] = useState(false);
 
@@ -25,7 +19,7 @@ export default function Pricing() {
         setSelectedTour(null);
       }, 2000);
     } catch (err) {
-      alert('Помилка бронювання');
+      alert('Booking error');
     }
   };
 
@@ -46,7 +40,6 @@ export default function Pricing() {
     <section id="pricing" className={styles.pricingSection}>
       <h2 className={styles.sectionTitle}>Pricing | Season tickets</h2>
 
-      {/* Контейнер для 3 карток */}
       <div className={styles.cardsWrapper}>
         {tickets &&
           tickets.map((ticket) => (
@@ -115,7 +108,6 @@ export default function Pricing() {
               </div>
 
               <div className={styles.modalRight}>
-                {/* Змінили структуру на звичайний список замість розкиданої мапи */}
                 <div className={styles.featuresList}>
                   <div className={styles.featureBubble}>
                     📸 Basic underwater photography to capture your best moments

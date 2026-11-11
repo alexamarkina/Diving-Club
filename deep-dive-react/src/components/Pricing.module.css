@@ -1,272 +1,252 @@
 .pricingSection {
-  position: relative;
-  padding: 100px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
-  min-height: 80vh;
+    position: relative;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    min-height: 80vh;
 }
 
 .sectionTitle {
-  font-size: 32px;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 50px;
-  color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
 }
 
-/* === КАРТКИ В 1 РЯД === */
-
 .cardsWrapper {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  position: relative;
-  z-index: 1;
-  flex-wrap: nowrap;
-  /* Забороняє карткам падати на новий рядок */
-  max-width: 1100px;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: nowrap;
+    max-width: 1100px;
+    width: 100%;
 }
 
 .card {
-  background: #274b69;
-  border-radius: 20px;
-  padding: 40px 30px;
-  flex: 1;
-  /* Робить всі картки однакової ширини */
-  max-width: 33%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: #274b69;
+    border-radius: 20px;
+    padding: 40px 30px;
+    flex: 1;
+    max-width: 33%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Робимо центральну картку трохи темнішою */
-
 .card:nth-child(2) {
-  background: #1d3a52;
+    background: #1d3a52;
 }
 
 .card h3 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 30px;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
 }
 
 .features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 30px 0;
-  flex-grow: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    flex-grow: 1;
 }
 
 .features li {
-  margin-bottom: 15px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #d1e1eb;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #d1e1eb;
 }
 
 .price {
-  font-size: 36px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .detailsBtn {
-  background: transparent;
-  border: 1px solid #5c849c;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-  width: 100%;
-  font-size: 16px;
+    background: transparent;
+    border: 1px solid #5c849c;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    font-size: 16px;
 }
 
 .detailsBtn:hover {
-  background: #5c849c;
+    background: #5c849c;
 }
 
-/* === НОВА МОДАЛКА === */
-
 .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
 }
 
 .modalContent {
-  background: #0d1e2d;
-  border: 1px solid #2a455a;
-  border-radius: 24px;
-  width: 95%;
-  max-width: 950px;
-  padding: 50px;
-  /* Збільшили падінг модалки */
-  position: relative;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    background: #0d1e2d;
+    border: 1px solid #2a455a;
+    border-radius: 24px;
+    width: 95%;
+    max-width: 950px;
+    padding: 50px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 .closeBtn {
-  position: absolute;
-  top: 25px;
-  right: 30px;
-  background: none;
-  border: none;
-  color: #5b9dbf;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 10;
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #5b9dbf;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
 }
 
 .modalBody {
-  display: flex;
-  gap: 50px;
-  /* Відстань між лівою і правою колонкою */
+    display: flex;
+    gap: 50px;
 }
 
 .modalLeft {
-  flex: 1;
-  max-width: 420px;
+    flex: 1;
+    max-width: 420px;
 }
 
-/* Оновлений заголовок: зліва, жирний, кольору кнопки */
-
 .modalLeft h2 {
-  font-size: 42px;
-  margin-bottom: 5px;
-  text-align: left;
-  font-weight: bold;
-  color: #60a5c9;
+    font-size: 42px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+    color: #60a5c9;
 }
 
 .modalSubtitle {
-  font-size: 18px;
-  margin-bottom: 20px;
-  text-align: left;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .wavyLine {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .modalDesc {
-  line-height: 1.6;
-  opacity: 0.9;
-  margin-bottom: 20px;
-  font-size: 14px;
-  text-align: left;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: left;
 }
 
 .noteBox {
-  background: rgba(42, 69, 90, 0.5);
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 11px;
-  line-height: 1.5;
-  margin-bottom: 30px;
-  opacity: 0.7;
-  text-align: left;
+    background: rgba(42, 69, 90, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    opacity: 0.7;
+    text-align: left;
 }
 
 .buttonWrapper {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .bookBtn {
-  background: #60a5c9;
-  border: none;
-  color: #fff;
-  padding: 12px 35px;
-  border-radius: 25px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s;
-  position: relative;
-  z-index: 2;
+    background: #60a5c9;
+    border: none;
+    color: #fff;
+    padding: 12px 35px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    z-index: 2;
 }
 
 .bookBtn:hover {
-  background: #4a86a6;
+    background: #4a86a6;
 }
 
 .bubbleSmall {
-  position: absolute;
-  top: -5px;
-  right: -10px;
-  width: 8px;
-  height: 8px;
-  background: #60a5c9;
-  border-radius: 50%;
-  opacity: 0.8;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    width: 8px;
+    height: 8px;
+    background: #60a5c9;
+    border-radius: 50%;
+    opacity: 0.8;
 }
 
 .bubbleMedium {
-  position: absolute;
-  bottom: 0px;
-  right: -20px;
-  width: 14px;
-  height: 14px;
-  background: #60a5c9;
-  border-radius: 50%;
-  opacity: 0.6;
+    position: absolute;
+    bottom: 0px;
+    right: -20px;
+    width: 14px;
+    height: 14px;
+    background: #60a5c9;
+    border-radius: 50%;
+    opacity: 0.6;
 }
 
 .modalRight {
-  flex: 1.2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* Центрує контент колонки по вертикалі */
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Список переваг акуратно один під одним */
-
 .featuresList {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  /* Відступ між бульбашками */
-  margin-bottom: 30px;
-  /* Відступ до ціни */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
 .featureBubble {
-  background: rgba(69, 107, 137, 0.2);
-  /* Зробив фон трохи легшим */
-  border: 1px solid rgba(123, 153, 176, 0.3);
-  padding: 15px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.4;
-  text-align: left;
+    background: rgba(69, 107, 137, 0.2);
+    /* Зробив фон трохи легшим */
+    border: 1px solid rgba(123, 153, 176, 0.3);
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
 }
 
-/* Ціна тепер у звичайному потоці (не прилипає до низу) */
-
 .priceTag {
-  font-size: 46px;
-  font-weight: bold;
-  text-align: right;
-  /* Вирівнювання ціни по правому краю колонки */
+    font-size: 46px;
+    font-weight: bold;
+    text-align: right;
 }
 
 .priceTag span {
-  font-size: 24px;
-  font-weight: normal;
-  opacity: 0.8;
+    font-size: 24px;
+    font-weight: normal;
+    opacity: 0.8;
 }

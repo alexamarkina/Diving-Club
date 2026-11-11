@@ -11,11 +11,22 @@ export const useAuth = () => {
         setError(null);
 
         try {
-            const response = await fetch('https://6ae64b83877d34ccafc2c349.mockapi.io/tickets');
-            if (!response.ok) throw new Error('Server error');
+            const response = await fetch('http://localhost:5001/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
 
-            if (email && password) {
-                localStorage.setItem('token', 'fake-jwt-token-12345');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Authorisation failed');
+            }
+
+            const data = await response.json();
+            if (data.token) {
+                localStorage.setItem('token', data.token);
                 localStorage.setItem('userEmail', email);
 
                 if (!localStorage.getItem('userName')) {
@@ -24,8 +35,6 @@ export const useAuth = () => {
                 }
 
                 navigate('/cabinet');
-            } else {
-                throw new Error('Please, enter email and password');
             }
         } catch (err) {
             setError(err.message);
