@@ -1,60 +1,137 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useFetch } from '../hooks/useFetch';
+import { usePost } from '../hooks/usePost';
 import styles from './Pricing.module.css';
 
 export default function Pricing() {
+  const { data: tickets, loading, error } = useFetch('http://localhost:5001/api/tickets');
+  const { postData, loading: isBooking } = usePost('http://localhost:5001/api/bookings');
+  
+  const [selectedTour, setSelectedTour] = useState(null);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
+
+  const handleBookTour = async (tour) => {
+    try {
+      await postData({ title: tour.title, price: tour.price });
+      setBookingSuccess(true);
+      setTimeout(() => {
+        setBookingSuccess(false);
+        setSelectedTour(null);
+      }, 2000);
+    } catch (err) {
+      alert('Booking error');
+    }
+  };
+
+  if (loading)
+    return (
+      <section id="pricing" className={styles.pricingSection}>
+        <h2>Loading tickets...</h2>
+      </section>
+    );
+  if (error)
+    return (
+      <section id="pricing" className={styles.pricingSection}>
+        <h2>Error: {error}</h2>
+      </section>
+    );
+
   return (
-    <section className={styles.pricing} id="pricing">
-      <div className={styles.pricingHeader}>
-        <h2>Pricing</h2>
-        <p className={styles.pricingSubtitle}>Seasonal abonement</p>
+    <section id="pricing" className={styles.pricingSection}>
+      <h2 className={styles.sectionTitle}>Pricing | Season tickets</h2>
+
+      <div className={styles.cardsWrapper}>
+        {tickets &&
+          tickets.map((ticket) => (
+            <div key={ticket.id} className={styles.card}>
+              <h3>{ticket.title}</h3>
+              <ul className={styles.features}>
+                <li>
+                  {ticket.description1 ||
+                    '• One-on-one coaching with a pro trainer. Perfect for rapid skill improvement.'}
+                </li>
+                <li>{ticket.description2 || '• Duration: 2 hours'}</li>
+                <li>{ticket.description3 || '• Access to unique dive locations'}</li>
+              </ul>
+              <div className={styles.price}>${ticket.price}</div>
+
+              <button className={styles.detailsBtn} onClick={() => setSelectedTour(ticket)}>
+                Details & Book
+              </button>
+            </div>
+          ))}
       </div>
 
-      <div className={styles.pricingContainer}>
-        <div className={`${styles.pricingCard}${styles.smallCard}`}>
-          <h3>Solo</h3>
-          <ul>
-            <li>One-on-one coaching with a pro trainer.</li>
-            <li>Access to 2 unique dive locations.</li>
-            <li>Perfect for rapid skill improvement.</li>
-          </ul>
-          <div className={styles.priceBtnWrapper}>
-            <img src="img/Solo.png" alt="$240" className={styles.priceImg} />
+      {selectedTour && (
+        <div className={styles.modalOverlay} onClick={() => !isBooking && setSelectedTour(null)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeBtn} onClick={() => setSelectedTour(null)}>
+              ✖
+            </button>
+
+            <div className={styles.modalBody}>
+              <div className={styles.modalLeft}>
+                <h2>{selectedTour.title}</h2>
+                <p className={styles.modalSubtitle}>what people choose</p>
+
+                <svg className={styles.wavyLine} width="60" height="10" viewBox="0 0 60 10">
+                  <path
+                    d="M 0 5 Q 5 0 10 5 T 20 5 T 30 5 T 40 5 T 50 5"
+                    fill="transparent"
+                    stroke="#fff"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+
+                <p className={styles.modalDesc}>
+                  The perfect balance for those seeking new experiences. This pass covers dives in
+                  three different countries, each offering a unique underwater world. Discover new
+                  depths with zero organizational hassle.
+                </p>
+
+                <div className={styles.noteBox}>
+                  Flights and accommodation are not included. The detailed departure schedule is
+                  finalized once the group is fully booked.
+                </div>
+
+                <div className={styles.buttonWrapper}>
+                  <button
+                    className={styles.bookBtn}
+                    onClick={() => handleBookTour(selectedTour)}
+                    disabled={isBooking}
+                  >
+                    {isBooking ? 'Booking...' : bookingSuccess ? 'Booked! ✓' : 'Want to dive!'}
+                  </button>
+                  <div className={styles.bubbleSmall}></div>
+                  <div className={styles.bubbleMedium}></div>
+                </div>
+              </div>
+
+              <div className={styles.modalRight}>
+                <div className={styles.featuresList}>
+                  <div className={styles.featureBubble}>
+                    📸 Basic underwater photography to capture your best moments
+                  </div>
+                  <div className={styles.featureBubble}>
+                    🤿 Basic Gear Included. Tank, weights, and wetsuit rentals
+                  </div>
+                  <div className={styles.featureBubble}>
+                    🌍 3 Countries in 1 Season (itineraries updated seasonally)
+                  </div>
+                  <div className={styles.featureBubble}>
+                    🤓 Professional instructor support on every dive
+                  </div>
+                </div>
+
+                <div className={styles.priceTag}>
+                  ${selectedTour.price}
+                  <span> / person</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className={`${styles.pricingCard}${styles.mainCard}`}>
-          <h3>Group</h3>
-          <p className={styles.cardSubtitle}>what people choose</p>
-          <div className={styles.waveDivider}>~~~</div>
-          <ul>
-            <li>Small group dives (8-10 people).</li>
-            <li>Fun team atmosphere & support.</li>
-            <li>3 diverse locations.</li>
-            <li>Buddy system practice included.</li>
-            <li>Nunc tristique sagittis curabitur tellus.</li>
-          </ul>
-
-          <div className={styles.priceBtnWrapper}>
-            <img src="img/Group.png" alt="$399" className={styles.priceImg} />
-          </div>
-        </div>
-
-        <div className={`${styles.pricingCard}${styles.smallCard}`}>
-          <h3>Cruise</h3>
-          <ul>
-            <li>Large-scale dive expedition (30-50 divers).</li>
-            <li>Expanded team of top instructors.</li>
-            <li>Access to 5+ exclusive dive sites.</li>
-            <li>Accommodation and entertainment program.</li>
-            <li>Networking and parties on board.</li>
-            <li className={styles.italicText}> + Includes transfer and accommodation</li>
-          </ul>
-
-          <div className={styles.priceBtnWrapper}>
-            <img src="img/Cruise.png" alt="$590" className={styles.priceImg} />
-          </div>
-        </div>
-      </div>
+      )}
     </section>
   );
 }
