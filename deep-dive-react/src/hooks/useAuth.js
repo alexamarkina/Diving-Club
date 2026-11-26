@@ -6,12 +6,14 @@ export const useAuth = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const login = async (email, password) => {
+  const authenticate = async (email, password, isSignUp = false) => {
     setLoading(true);
     setError(null);
 
+    const endpoint = isSignUp ? '/api/auth/register' : '/api/auth/login';
+
     try {
-      const response = await fetch(`${import.meta.env.VITE_URL}/api/auth/login`, {
+      const response = await fetch(`${import.meta.env.VITE_URL}${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,10 +31,8 @@ export const useAuth = () => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userEmail', email);
 
-        if (!localStorage.getItem('userName')) {
-          const defaultName = email.split('@')[0];
-          localStorage.setItem('userName', defaultName);
-        }
+        const defaultName = email.split('@')[0];
+        localStorage.setItem('userName', defaultName);
 
         navigate('/cabinet');
       }
@@ -49,5 +49,5 @@ export const useAuth = () => {
     navigate('/login');
   };
 
-  return { login, logout, loading, error };
+  return { authenticate, logout, loading, error };
 };
