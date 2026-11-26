@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './Coaches.module.css';
 
 export default function Coaches() {
+  const trackRef = useRef(null);
+
+  const scroll = (direction) => {
+    trackRef.current.scrollBy({ left: direction * 406, behavior: 'smooth' });
+  };
+
   return (
     <section className={styles.coaches} id="coach">
       <h2>Coaches</h2>
 
       <p>only qualified trainers</p>
 
-      <div className={styles.swiperWrapper}>
+      <div className={styles.swiperWrapper} ref={trackRef}>
         <div className={styles.coachCard}>
           <img src="img/coach1.jpeg" alt="Coach 1" />
 
@@ -77,11 +83,11 @@ export default function Coaches() {
       </div>
 
       <div className={styles.navigationButtons}>
-        <div className={styles.previousBtn}>
+        <div className={styles.previousBtn} onClick={() => scroll(-1)}>
           <img src="img/left-arrow-btn.png" alt="previous cards" />
         </div>
 
-        <div className={styles.nextBtn}>
+        <div className={styles.nextBtn} onClick={() => scroll(1)}>
           <img src="img/right-arrow-btn.png" alt="next cards" />
         </div>
       </div>

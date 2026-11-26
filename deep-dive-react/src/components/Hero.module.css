@@ -1,29 +1,23 @@
-/* Hero.module.css */
-
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 700px;
+    background-color: #032130;
     background-image: url(/img/Slice\ 1.png);
-    text-align: center;
-    background-size: contain;
+    background-size: cover;
+    background-position: center bottom;
     background-repeat: no-repeat;
+    text-align: center;
     padding-top: 260px;
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-
-/* Можна звертатися до звичайних тегів всередині класу */
-
 .hero h1 {
     margin-top: -20px;
     margin-bottom: 20px;
 }
-
-
-/* Було .hero-subtitle, стало .subtitle (або .heroSubtitle) */
 
 .subtitle {
     font-size: 24px;
@@ -32,17 +26,11 @@
     text-align: center;
 }
 
-
-/* Було .hero-buttons-wrapper, стало .buttonsWrapper */
-
 .buttonsWrapper {
     display: flex;
     gap: 36px;
     margin-top: 120px;
 }
-
-
-/* Було .hero-btn, стало .btn */
 
 .btn {
     display: inline-block;
