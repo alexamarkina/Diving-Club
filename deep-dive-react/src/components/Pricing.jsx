@@ -6,7 +6,7 @@ import styles from './Pricing.module.css';
 export default function Pricing() {
   const { data: tickets, loading, error } = useFetch(`${import.meta.env.VITE_URL}/api/tickets`);
   const { postData, loading: isBooking } = usePost(`${import.meta.env.VITE_URL}/api/bookings`);
-  
+
   const [selectedTour, setSelectedTour] = useState(null);
   const [bookingSuccess, setBookingSuccess] = useState(false);
 

@@ -30,7 +30,7 @@ export default function About() {
             </p>
 
             <aside>
-              <img src="img/founder копія.png" alt="Sasha founder of UNDER" />
+              <img src="img/founder-copy.png" alt="Sasha founder of UNDER" />
 
               <p>
                 Sasha <br />
