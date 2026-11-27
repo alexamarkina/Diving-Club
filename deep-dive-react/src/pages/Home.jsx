@@ -11,7 +11,6 @@ import Booking from '../components/Booking';
 export default function Home() {
   return (
     <>
-      {/* Тут просто викликаються всі секції твого лендінгу по черзі */}
       <Hero />
       <About />
       <Offer />

@@ -9,7 +9,7 @@ export default function Reviews() {
       <div className={styles.swiperWrapper}>
         <div className={styles.reviewCard}>
           <div className={styles.reviewHeader}>
-            <img src="/img/Rectangle 124.png" alt="Kali Soy" />
+            <img src="/img/Rectangle-125-copy.png" alt="Kali Soy" />
             <div className={styles.reviewTitle}>
               <h3>Kali Soy</h3>
               <div className={styles.reviewStars}>

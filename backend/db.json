@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1795724998607,
+      "email": "maerra@gmail.com",
+      "password": ";erg;wehr935"
+    },
+    {
+      "id": 1795725170629,
+      "email": "markinaoleksandra0@gmail.com",
+      "password": "1q2wazsx"
+    },
+    {
+      "id": 1795725520616,
+      "email": "diver1@test.com",
+      "password": "123"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1795725215015,
+      "title": "Group",
+      "price": 399,
+      "createdAt": "2026-11-26T20:33:35.015Z"
+    },
+    {
+      "id": 1795725609916,
+      "email": "diver1@test.com",
+      "ticket": "Solo",
+      "price": 240,
+      "createdAt": "2026-11-26T20:40:09.916Z"
+    }
+  ]
+}
